@@ -57,29 +57,54 @@ import React from 'react'
     // part c)
 
 const App = () => {
-  const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
-
+  const course = {
+    name: 'Half Stack application development',
+    parts: [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  }
+  let partNum = 0;
   return (
     <div>
-      <h1>{course}</h1>
-      <p>
-        {part1} {exercises1}
-      </p>
-      <p>
-        {part2} {exercises2}
-      </p>
-      <p>
-        {part3} {exercises3}
-      </p>
-      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+      <h1>{course.name}</h1>
+      {course.parts.forEach((part) => {
+        <p>
+        {part.name} {part.exercises}
+        </p>
+        partNum++
+      })}
+      <p>Number of exercises {partNum}</p>
     </div>
   )
 }
 
 export default App
+
+
+// basic class layout
+class Person {
+  constructor(name, age) {
+    this.name = name
+    this.age = age
+  }
+  greet() {
+    console.log('hello, my name is ' + this.name)
+  }
+}
+
+const adam = new Person('Adam Ondra', 35)
+adam.greet()
+
+const janja = new Person('Janja Garnbret', 22)
+janja.greet()
