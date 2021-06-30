@@ -1,4 +1,6 @@
-import React from 'react'
+// import React from 'react'
+import React, { useState } from 'react'
+// import ReactDOM from 'react-dom'
 
 // part a)
 
@@ -190,44 +192,111 @@ import React from 'react'
 
 // DESTRUCTURING
 
+// const App = () => {
+//   const name = 'Peter'
+//   const age = 10
+
+//   return (
+//     <div>
+//       <h1>Greetings</h1>
+//       <Hello1 name="Maya" age={26 + 10} />
+//       <Hello2 name={name} age={age} />
+//     </div>
+//   )
+// }
+
+
+// const Hello2 = (props) => {
+//   // destruct
+//   const { name, age } = props
+//   const bornYear = () => new Date().getFullYear() - age
+
+//   return (
+//     <div>
+//       <p>Hello {name}, you are {age} years old</p>
+//       <p>So you were probably born in {bornYear()}</p>
+//     </div>
+//   )
+// }
+// // or 
+
+// const Hello1 = ({ name, age }) => {
+//   // further destructured. Takes in an object of shape name an age
+//   const bornYear = () => new Date().getFullYear() - age
+
+//   return (
+//     <div>
+//       <p>
+//         Hello {name}, you are {age} years old
+//       </p>
+//       <p>So you were probably born in {bornYear()}</p>
+//     </div>
+//   )
+// }
+// // COUNTER
+// let counter = 1
+
+// const refresh = () => {
+//   ReactDOM.render(<App counter={counter} />, 
+//   document.getElementById('root'))
+// }
+
+// setInterval(() => {
+//   refresh()
+//   counter += 1
+// }, 1000)
+
+// const counter = (number) => {
+  
+// }
+// export default App
+
+
+
+// COUNTER
+
+// const App = (props) => {
+//   const {counter} = props
+//   return (
+//     <div>{counter}</div>
+//   )
+// }
+
+// export default App
+
+
+// PROPER WAY TO SET UP COUNTER
+
+/* const App = () => {
+
+  //deconstruction syntax assigns an array that contains two items to two variables, counter is a number and setCounter is a function
+  const [ counter, setCounter ] = useState(0)
+
+  // calls setCounter every second and adds 1 to counter 
+  // Every time the setCounter modifies the state it causes the component to re-render. 
+  setTimeout(
+    () => setCounter(counter + 1),
+    1000
+  )
+
+  // displays the counter, use state is updating its value live on screen every second
+  return (
+    <div>{counter}</div>
+  )
+}
+// this allows for no refresh of the page, just its state
+export default App */
+
+
+
+
+// Counter properly implemented
+// COUNTER
+
+import Counter from './components/Counter'
 const App = () => {
-  const name = 'Peter'
-  const age = 10
-
-  return (
-    <div>
-      <h1>Greetings</h1>
-      <Hello1 name="Maya" age={26 + 10} />
-      <Hello2 name={name} age={age} />
-    </div>
+  return(
+    <Counter />
   )
 }
-
-
-const Hello2 = (props) => {
-  // destruct
-  const { name, age } = props
-  const bornYear = () => new Date().getFullYear() - age
-
-  return (
-    <div>
-      <p>Hello {name}, you are {age} years old</p>
-      <p>So you were probably born in {bornYear()}</p>
-    </div>
-  )
-}
-// or 
-
-const Hello1 = ({ name, age }) => {
-  // further destructured. Takes in an object of shape name an age
-  const bornYear = () => new Date().getFullYear() - age
-
-  return (
-    <div>
-      <p>
-        Hello {name}, you are {age} years old
-      </p>
-      <p>So you were probably born in {bornYear()}</p>
-    </div>
-  )
-}
+export default App
