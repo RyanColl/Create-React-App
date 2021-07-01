@@ -1,5 +1,6 @@
 // import React from 'react'
-import React, { useState } from 'react'
+import React from 'react'
+import ClickHandler from './components/ClickHandler'
 // import ReactDOM from 'react-dom'
 
 // part a)
@@ -293,10 +294,203 @@ export default App */
 // Counter properly implemented
 // COUNTER
 
-import Counter from './components/Counter'
+/* import Counter from './components/Counter'
 const App = () => {
   return(
     <Counter />
   )
 }
+export default App */
+
+
+// PRESS BUTTON CHANGE
+/* const App = () => {
+  const [ counter, setCounter ] = useState(0)
+
+  const handleClick = () => {
+    console.log('clicked')
+    setCounter(counter +1)
+  }
+
+  return (
+    <div>
+      <div>{counter}</div>
+      <button onClick={handleClick}>
+        plus
+      </button>
+    </div>
+  )
+}
+export default App */
+
+
+//-------- PREFERRED BUTTON APP LAYOUT ------------
+
+
+
+
+/* import Buttons from './components/Buttons'
+const App = () => {
+  return(
+    <Buttons />
+  )
+}
+export default App */
+
+//--------------------------------------------
+
+
+// complex ---------------------------------------------
+
+/* const App = () => {
+  const [left, setLeft] = useState(0)
+  const [right, setRight] = useState(0)
+
+  return (
+    <div>
+      {left}
+      <button onClick={() => setLeft(left + 1)}>
+        left
+      </button>
+      <button onClick={() => setRight(right + 1)}>
+        right
+      </button>
+      {right}
+    </div>
+  )
+} */
+// OR
+/* const App = () => {
+
+  // sets react's use-state counter to an object with left and right keys, and allows the setClicks function to take in an object that updates the counter object
+  // clicks is a good name
+  const [clicks, setClicks] = useState({
+    left: 0, right: 0
+  })
+
+  // handles by returning the same value for the right key, but a +1 value to the left key
+  /* const handleLeftClick = () => {
+    const newClicks = { 
+      left: clicks.left + 1, 
+      right: clicks.right 
+    }
+    setClicks(newClicks)
+  } */
+
+  // CREATES AN OBJECT THAT IS THE SAME AS CLICKS BUT ADDS THE INDICATED VALUE TO ONE OF THE KEYS
+  /*
+  const handleLeftClick = () =>
+  setClicks({ ...clicks, left: clicks.left + 1 })
+
+  const handleRightClick = () =>
+  setClicks({ ...clicks, right: clicks.right + 1 })
+
+
+  // handles by returning the same value for the left key, but a +1 value to the right key
+  /* const handleRightClick = () => {
+    const newClicks = { 
+      left: clicks.left, 
+      right: clicks.right + 1  
+    }
+    setClicks(newClicks)
+  } */
+/*
+  return (
+    <div>
+      {clicks.left}
+      <button onClick={handleLeftClick}>left</button>
+      <button onClick={handleRightClick}>right</button>
+      {clicks.right}
+    </div>
+  )
+}
+export default App
+ */
+
+
+/* const App = () => {
+  const [left, setLeft] = useState(0)
+  const [right, setRight] = useState(0)
+  const [allClicks, setAll] = useState([])
+
+  const handleLeftClick = () => {
+    // setAll takes in a new copy of the array
+    // do not try to push to a component state, nor assign something directly to it. Always give the useState function a new copy of the object or array for proper updating
+    setAll(allClicks.concat('L'))
+    setLeft(left + 1)
+  }
+
+  const handleRightClick = () => {
+    // setAll takes in a new copy of the array
+    // do not try to push to a component state, nor assign something directly to it. Always give the useState function a new copy of the object or array for proper updating
+    setAll(allClicks.concat('R'))
+    setRight(right + 1)
+  }
+
+  return (
+    <div>
+      {left}
+      <button onClick={handleLeftClick}>left</button>
+      <button onClick={handleRightClick}>right</button>
+      {right}
+      <History allClicks={allClicks} />
+    </div>
+  )
+}
+export default App */
+
+
+
+/* const History = (props) => {
+  if (props.allClicks.length === 0) {
+    return (
+      <div>
+        the app is used by pressing the buttons
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      button press history: {props.allClicks.join(' ')}
+    </div>
+  )
+}
+
+
+
+const App = () => {
+  const [left, setLeft] = useState(0)
+  const [right, setRight] = useState(0)
+  const [allClicks, setAll] = useState([])
+
+  const handleLeftClick = () => {
+    setAll(allClicks.concat('L'))
+    setLeft(left + 1)
+  }
+
+  const handleRightClick = () => {
+    setAll(allClicks.concat('R'))
+    setRight(right + 1)
+  }
+
+  return (
+    <div>
+      {left}
+      <Button handleClick={handleLeftClick} text='left' />
+      <Button handleClick={handleRightClick} text='right' />
+      {right}
+      <History allClicks={allClicks} />
+    </div>
+  )
+}
+
+export default App */
+
+const App = () => {
+  return(
+    <ClickHandler />
+  )
+}
+
 export default App
